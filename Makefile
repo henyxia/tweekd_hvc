@@ -1,18 +1,18 @@
-export CC = avr-gcc
+CC = avr-gcc
 
-export MCU = atmega328p
-export TARGET_ARCH = -mmcu=$(MCU)
+MCU = atmega328p
+TARGET_ARCH = -mmcu=$(MCU)
 
-export CFLAGS =  -Wall -I. -DF_CPU=16000000 -Os #-g
-export LDFLAGS = -g $(TARGET_ARCH) -lm -Wl,--gc-sections #	-Os
+CFLAGS =  -Wall -I. -DF_CPU=16000000 -Os #-g
+LDFLAGS = -g $(TARGET_ARCH) -lm -Wl,--gc-sections #	-Os
 
 TARGET = usb
-TERM = /dev/ttyACM0
+TERM = /dev/ttyACM1
 CPPFLAGS = -mmcu=$(MCU)
 PGMER = -c stk500v1 -b 57600 -P $(TERM)
 PGMERISP = -c stk500v1 -b 115200 -P $(TERM)
 ARVDUDECONF= -C /usr/local/arduino/arduino-0022/hardware/tools/avrdude.conf
-export DUDE = /usr/bin/avrdude -F -v -p $(MCU) $(AVRDUDECONF)
+DUDE = /usr/bin/avrdude -F -v -p $(MCU) $(AVRDUDECONF)
 
 C_SRC = $(wildcard *.c)
 OBJS = $(C_SRC:.c=.o)
