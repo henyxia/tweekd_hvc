@@ -872,6 +872,8 @@ int main(void)
 			else
 				send_serial('K');
 		}
+		else if(ser == 'A')
+			send_serial('C');
 		else
 			send_serial('J');
 	}
